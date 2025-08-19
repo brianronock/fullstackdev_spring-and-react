@@ -134,14 +134,14 @@ to see the backend project at the beginning of Part I.
 Clone this repository:
 
 ```bash
-git clone https://github.com/yourname/fullstack-book.git
-cd fullstack-book
+git clone https://github.com/brianronock/fullstackdev_spring-and-react.git
+cd fullstackdev_spring-and-react.
 ```
 
 Check out the branch you want to explore:
 
 ```bash
-git checkout part1-chapter1
+git checkout part1-chapter1-intro
 ```
 
 Each part also has its own `README.md` with more detailed instructions.
