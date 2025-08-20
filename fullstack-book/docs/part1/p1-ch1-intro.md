@@ -72,7 +72,7 @@ This structure also aids in testing: you can test each part in isolation by mock
 
 To illustrate how these pieces interact, let’s walk through a typical request: “**Create a new product.”**
 
-> A client (perhaps our React frontend, or a tool like Postman) sends an HTTP **POST** request to /api/products with a JSON body containing the product details (e.g., {"name": "Coffee Mug", "price": 12.50}).
+> A client (perhaps our React frontend, or a tool like Postman) sends an HTTP **POST** request to /api/products with a JSON body containing the product details (e.g., \{"name": "Coffee Mug", "price": 12.50\}).
 >
 > > The **Controller** (specifically our ProductController) has a method mapped to POST /api/products. Spring Boot routes the request here. The controller method takes a ProductRequest DTO as input, which Spring automatically deserializes from JSON and, thanks to validation annotations, also checks for validity (e.g., that name isn’t blank, price isn’t null and is positive).
 > >
@@ -92,7 +92,7 @@ To illustrate how these pieces interact, let’s walk through a typical request:
 >
 > > Back in the **Controller**, we now have a saved Product entity. The controller uses the **mapper** again to convert this into a ProductResponse DTO (which might just be identical fields in this simple case). The controller then builds an HTTP response:
 > >
-> > Usually for a creation, it’s good practice to return a 201 Created status. We also include a Location header pointing to the new resource (/api/products/{id} for the new product’s ID).
+> > Usually for a creation, it’s good practice to return a 201 Created status. We also include a Location header pointing to the new resource (/api/products/\{id\} for the new product’s ID).
 > >
 > > The response body will contain the JSON representation of ProductResponse (including the new id, name, price).
 >

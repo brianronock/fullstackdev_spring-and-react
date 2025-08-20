@@ -1,3 +1,8 @@
+---
+id: intro
+title: introduction
+---
+
 # **Introduction**
 
 When we talk about *full stack development*, we are speaking about much
