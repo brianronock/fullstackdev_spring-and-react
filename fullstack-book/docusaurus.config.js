@@ -37,25 +37,36 @@ const config = {
   ],
 
   themeConfig: ({
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/social-card.png',
+    favicon: 'img/logo.svg',
     navbar: {
       title: 'Full Stack Book',
       logo: { alt: 'Book Logo', src: 'img/logo.svg' },
       items: [
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Table of Contents' },
         // { type: 'localeDropdown', position: 'right', },
+        // { to: '/blog', label: 'Blog', position: 'left' },
         { href: 'https://github.com/brianronock/fullstackdev_spring-and-react', label: 'GitHub', position: 'right' },
       ],
     },
     footer: {
       style: 'dark',
-      links: [],
-      copyright: `Copyright © ${new Date().getFullYear()} Brian Rono CK`,
+      // links: [
+      //   {
+      //     title: 'Quick-Links', items: [
+      //       { label: 'Introduction', to: '/docs/intro' },
+      //       { label: 'Part 1', to: '/docs/part1/p1-ch1-intro' },
+      //     ]
+      //   },
+      //   { title: 'Community', items: [{ label: 'Discord', href: 'https://discord.gg/...' }] },
+
+      // ],
+      copyright: `© ${new Date().getFullYear()} Brian Rono CK`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['java','bash','json','yaml','sql','http','docker','properties', 'javascript', 'jsx'],
+      additionalLanguages: ['java', 'bash', 'json', 'yaml', 'sql', 'http', 'docker', 'properties', 'javascript', 'jsx'],
     },
   }),
 };

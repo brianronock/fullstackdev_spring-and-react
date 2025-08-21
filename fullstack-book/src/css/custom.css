@@ -5,22 +5,38 @@
  */
 
 /* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+
 :root {
-  --ifm-color-primary: rgb(46, 66, 133);
-  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary: #011C27;
+  --ifm-color-primary-dark: #294aba;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-light: #3c6bff;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: rgb(60, 173, 110);
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-color-secondary: #359962;
+  --ifm-color-emphasis-0: #480355;
+  --ifm-navbar-background-color: #767ed4;
+  --ifm-color-secondary:  #480355;
+
+
+  /* typography */
+  --ifm-font-family-base: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.75;
+
+  /* UI feel */
+  --ifm-global-radius: 14px;
+  --ifm-leading: 0.4em;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: rgb(54, 95, 231);
+  --ifm-color-primary: #8093F1;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
@@ -29,9 +45,24 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-color-secondary: #359962;
+  --ifm-color-secondary: #359962;
+  --ifm-color-emphasis-0:  #480355;
+  --ifm-navbar-background-color: #11022b;
+
 }
 
 code {
   font-family: "Monaco", monospace;
   font-size: 0.85rem;
+  font-variant-ligatures: none;
+}
+
+/* Make docs content wider than default */
+.theme-doc-markdown {
+  --ifm-container-width: 1200px;
+}
+
+/* Wider content container */
+.container {
+  max-width: 1200px;
 }
