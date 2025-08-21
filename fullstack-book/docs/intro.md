@@ -1,6 +1,6 @@
 ---
 id: intro
-title: introduction
+title: Introduction
 ---
 
 # **Introduction**
