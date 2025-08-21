@@ -1,6 +1,7 @@
 ---
 id: intro
-title: Introduction
+title: "Introduction"
+description: "Book Introduction"
 ---
 
 # **Introduction**
@@ -107,6 +108,8 @@ hours*” in print form. They include:
 >Common error troubleshooting
 >
 >Deployment and security checklists.
+> 
+> And many more...
 
 ### **A Note on Tools**
 

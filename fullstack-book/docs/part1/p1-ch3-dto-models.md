@@ -1,3 +1,8 @@
+---
+id: p1-ch3-dto-models
+title: "Chapter 3"
+description: "Creating API Models (DTOs)"
+---
 # Chapter 3
 
 ## **Creating API Models (DTOs)**

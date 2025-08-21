@@ -1,3 +1,9 @@
+---
+id: p1-ch2-domain-model
+title: "Chapter 2"
+description: "Defining the Domain Model with JPA"
+---
+
 # Chapter 2
 
 ## **Defining the Domain Model with JPA**

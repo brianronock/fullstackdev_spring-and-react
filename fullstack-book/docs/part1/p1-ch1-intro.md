@@ -1,5 +1,7 @@
 ---
-description: Introduction to the Backend Architecture
+id: p1-ch1-intro
+title: "Chapter 1"
+description: "Introduction to the Backend Architecture"
 ---
 
 # Chapter 1
@@ -22,7 +24,8 @@ Let’s start with the big picture of our backend. Building a backend is like co
 
 Each resource is typically accessed via a URL (endpoint). For example, /api/products might refer to the collection of product resources, and /api/products/42 to a specific product with ID 42. Clients and servers exchange data usually in **JSON** format for web APIs.
 
-**Why REST?** It’s stateless (each request contains all info needed, so server doesn’t have to remember earlier requests), scalable (can handle many clients easily), and widely used. Most libraries, tools, and developers are familiar with HTTP and REST, making it a sensible default for CRUD-heavy applications.
+### **Why REST?** 
+It’s stateless (each request contains all info needed, so server doesn’t have to remember earlier requests), scalable (can handle many clients easily), and widely used. Most libraries, tools, and developers are familiar with HTTP and REST, making it a sensible default for CRUD-heavy applications.
 
 There are alternatives:
 
@@ -56,7 +59,8 @@ In addition to these core layers, our backend will include:
 
 > **Testing**: Although not a “layer” per se, we will write tests for each layer (or across layers) to ensure our backend works as expected. This includes unit tests for services and integration tests for repository and controllers.
 
-**Why a Layered Structure?** It’s all about **separation of concerns** and **maintainability**. By keeping each layer focused, we make the code easier to understand and modify:
+### **Why a Layered Structure?** 
+It’s all about **separation of concerns** and **maintainability**. By keeping each layer focused, we make the code easier to understand and modify:
 
 > If you change how the web API looks (say, you rename a field or add a new endpoint), you mostly deal with the Controller and maybe the DTOs, without touching the service or repository logic.
 >
