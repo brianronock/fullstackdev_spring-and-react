@@ -11,7 +11,7 @@ In a well-designed application, the objects that represent data in the database 
 
 These external-facing objects are usually called **DTOs (Data Transfer Objects)** or sometimes *API models*. They are simple containers for data with typically no business logic.
 
-### **Why Use DTOs?**
+### Why Use DTOs?
 
 Couldn<span dir="rtl">'</span>t we just use our Product entity class directly in the controllers and have Spring Boot automatically convert it to JSON and vice versa? Yes, we could annotate Product with Jackson annotations to, say, ignore certain fields. However, using the entity directly in the web layer has drawbacks:
 
@@ -25,7 +25,7 @@ Couldn<span dir="rtl">'</span>t we just use our Product entity class directly in
 
 For these reasons, in larger applications you almost always see separate DTO classes. In small apps, some might skip it to save time, but since we<span dir="rtl">'</span>re aiming to show best practices, we<span dir="rtl">'</span>ll include them.
 
-### **Designing the DTOs**
+### Designing the DTOs
 
 We have two main DTOs:
 
@@ -73,7 +73,7 @@ public record ProductResponse(
 ) {}
 ```
 
-### **Breakdown of DTO fields and validations**
+### Breakdown of DTO fields and validations
 
 For **ProductRequest**:
 
@@ -97,13 +97,13 @@ For **ProductResponse**:
 >
 > The id is a Long and can be null in cases where, say, something went wrong (but normally, if we<span dir="rtl">'</span>re returning a ProductResponse, it should have an id). We could make it a primitive long if we want to ensure it<span dir="rtl">'</span>s always present. Using Long (wrapper) allows null, but in practice, we will always set it.
 
-### **Why not just use Product entity for responses?** 
+### Why not just use Product entity for responses?
 As discussed, one reason is future changes. For instance, imagine later we add a field lastUpdated to Product for internal use. We might not want to always expose that. By using a ProductResponse, we can choose not to include it in the API. It also decouples our API from our database: we could even restructure our database (say, split Product into multiple tables) and as long as we still produce the same ProductResponse JSON to clients, they don<span dir="rtl">'</span>t need to know about the internal change.
 
-### **Alternative approaches** 
+### Alternative approaches
 In some projects, people use libraries like **MapStruct** (which we will) or **ModelMapper** or manually write converters to go between entity and DTO. Another approach is to use something like Spring Projection or interface-based projections from JPA to directly get the data you need for a response, but that<span dir="rtl">'</span>s a more advanced use-case and can blur the separation. We<span dir="rtl">'</span>ll stick to explicit mapping.
 
-### **A note on immutability** 
+### A note on immutability
 By using records (or if not using Java 16+, one might use Lombok<span dir="rtl">'</span>s @Value for immutable classes), we make our DTOs immutable. This is generally good because we treat them as values. You create it and use it; you don<span dir="rtl">'</span>t need to modify it after creation. This prevents accidental side effects (e.g., some code changing a name in a DTO thinking it<span dir="rtl">'</span>s okay, but that doesn<span dir="rtl">'</span>t affect the entity or DB - it would only confuse logic). Immutability in multi-threaded environments (like a web server) is also beneficial for safety. The entity, on the other hand, is a mutable JPA entity (you load it, set fields, etc., then save). That<span dir="rtl">'</span>s fine because JPA needs to track changes, but at the boundaries (request/response) we prefer simpler immutable structures.
 
 Now that we have our DTOs, we need to handle converting between Product and these DTOs. We could write code in our controller or service to do new Product(dto.getName(), dto.getPrice()) and vice versa. But that gets tedious as the number of fields grows. Instead, we<span dir="rtl">'</span>ll use **MapStruct** to automatically generate these mappings for us.

@@ -13,7 +13,7 @@ the **Product** entity. In a sense, this is the heart of the backend,
 because everything we do (listing products, saving new ones, etc.)
 revolves around this entity.
 
-### **Understanding JPA and Entities**
+### Understanding JPA and Entities
 
 **JPA (Java Persistence API)** is a specification in Java for
 object-relational mapping (ORM). Spring Data JPA is an implementation
@@ -34,7 +34,7 @@ relational world:
 > Relationships between entities (not in this simple app, but in others)
 > can be mapped with annotations like @OneToMany, etc.
 
-### **Why use JPA (ORM) instead of plain JDBC (SQL)?** 
+### Why use JPA (ORM) instead of plain JDBC (SQL)?
 Productivity and
 maintainability. Writing SQL by hand for every query is fine in simple
 cases, but as the application grows, it can lead to a lot of boilerplate
@@ -48,7 +48,7 @@ understand how they work to avoid pitfalls like the
 <span dir="rtl">“</span>N+1 query problem.” But for the majority of CRUD
 operations, JPA is a huge help.
 
-### **Modeling the Product Entity**
+### Modeling the Product Entity
 
 We want to store products with at least a few fields:
 
@@ -62,7 +62,7 @@ For simplicity, we<span dir="rtl">’</span>ll stick to these three
 fields. In a real system, you might have more (description, quantity,
 category, etc.), but these will illustrate all the key concepts.
 
-### **Choosing Data Types**
+### Choosing Data Types
 
 id will be a Long (a 64-bit integer). We mark it as auto-generated. In
 the database, this might be an IDENTITY column (auto-increment). Using
@@ -140,7 +140,7 @@ public class Product {
 }
 ```
 
-### **Step-by-Step Breakdown**
+### Step-by-Step Breakdown
 
 > **Class and Lombok Annotations**: We annotate the class with @Entity,
 > which tells JPA that this is a persistent class. @Table(name =
@@ -215,7 +215,7 @@ auto-DDL is not recommended for production, so later
 we<span dir="rtl">’</span>ll discuss using a migration tool (Flyway) for
 database schema.
 
-### **Validations in Entity vs DTO**
+### Validations in Entity vs DTO
 We put @NotBlank and @NotNull on the
 entity as a safeguard. But often we also (or instead) put validations on
 the DTOs that the controllers use for input (ProductRequest DTO in our
@@ -239,7 +239,7 @@ it to say, our primary validation will happen at the API level, and the
 annotations on the entity mainly help for database schema and
 documentation of intent.
 
-### **Pitfalls to Avoid**
+### Pitfalls to Avoid
 One common mistake is forgetting to include a
 no-argument constructor (JPA requires it). With Lombok,
 @NoArgsConstructor handles that. Another is not marking ID generation

@@ -10,7 +10,7 @@ description: "Introduction to the Backend Architecture"
 
 Let’s start with the big picture of our backend. Building a backend is like constructing the foundation and engine of a house. It’s the part of the application that clients (like frontends or mobile apps) don’t see directly, but it powers everything. We’ll be building a **RESTful API** for a product management system - imagine the backend of an online store where you can list products, search them, add new products, update or delete them.
 
-### **What is RESTful Architecture?**
+### What is RESTful Architecture?
 
 **REST (Representational State Transfer)** is a style of designing networked applications. In a RESTful design, we treat server-side data as **resources** (e.g., “products”), and we use standard HTTP methods to operate on them:
 
@@ -24,7 +24,7 @@ Let’s start with the big picture of our backend. Building a backend is like co
 
 Each resource is typically accessed via a URL (endpoint). For example, /api/products might refer to the collection of product resources, and /api/products/42 to a specific product with ID 42. Clients and servers exchange data usually in **JSON** format for web APIs.
 
-### **Why REST?** 
+### Why REST?
 It’s stateless (each request contains all info needed, so server doesn’t have to remember earlier requests), scalable (can handle many clients easily), and widely used. Most libraries, tools, and developers are familiar with HTTP and REST, making it a sensible default for CRUD-heavy applications.
 
 There are alternatives:
@@ -35,7 +35,7 @@ There are alternatives:
 
 For our needs (a simple product management backend), REST hits the sweet spot of simplicity and clarity.
 
-### **High-Level Backend Architecture**
+### High-Level Backend Architecture
 
 Our Spring Boot backend will follow a **layered architecture**, a common pattern in enterprise Java applications (and indeed in many other languages too). Picture it like a layered cake or a sandwich, where each layer has a distinct responsibility:
 
@@ -59,7 +59,7 @@ In addition to these core layers, our backend will include:
 
 > **Testing**: Although not a “layer” per se, we will write tests for each layer (or across layers) to ensure our backend works as expected. This includes unit tests for services and integration tests for repository and controllers.
 
-### **Why a Layered Structure?** 
+### Why a Layered Structure?
 It’s all about **separation of concerns** and **maintainability**. By keeping each layer focused, we make the code easier to understand and modify:
 
 > If you change how the web API looks (say, you rename a field or add a new endpoint), you mostly deal with the Controller and maybe the DTOs, without touching the service or repository logic.
@@ -72,7 +72,7 @@ This structure also aids in testing: you can test each part in isolation by mock
 
 **Drawbacks?** For simple applications, all these layers can feel like overkill or boilerplate. Indeed, for a tiny app, one might combine some of these (for instance, have the controller directly use a repository). But we’re setting things up in a scalable way - our example app is simple, but the patterns we use are the same ones you’d use in a large enterprise system with many entities and complex logic. Starting with a good structure means the app can grow without a total rewrite.
 
-### **Data Flow in Our Application**
+### Data Flow in Our Application
 
 To illustrate how these pieces interact, let’s walk through a typical request: “**Create a new product.”**
 

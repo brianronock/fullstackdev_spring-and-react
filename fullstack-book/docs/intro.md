@@ -4,8 +4,9 @@ title: "Introduction"
 description: "Book Introduction"
 ---
 
-# **Introduction**
+# Introduction
 
+## **Introduction to Full Stack Development**
 When we talk about *full stack development*, we are speaking about much
 more than stitching together a backend and a frontend. We are speaking
 about building a **living, breathing system**, one that accepts input,
@@ -19,7 +20,7 @@ architect**. We will move deliberately, as engineers, not copy-paste
 hobbyists, because our aim is not just to <span dir="rtl">“</span>make
 something work,” but to **make something worth building**.
 
-### **The Project at a Glance**
+### The Project at a Glance
 
 We will construct a **Product Management System** that is both realistic
 and extendable, the kind of project that could sit comfortably in a
@@ -54,7 +55,7 @@ When completed, this system will stand as a portfolio-worthy example of
 your capability to design, implement, and deploy a full stack
 application from zero to production.
 
-### **Our Development Philosophy**
+### Our Development Philosophy
 
 We will follow three guiding principles throughout this book:
 
@@ -71,7 +72,7 @@ We will follow three guiding principles throughout this book:
 > a Maven-to-Gradle migration, because in real-world projects, these
 > transitions happen.
 
-### **The High-Level Architecture**
+### The High-Level Architecture
 
 Before we write a single line of code, we must see the *map*.
 
@@ -84,7 +85,7 @@ In **Part V**, we will containerize both backend and frontend with
 Docker, configure them for deployment, and add monitoring to keep them
 healthy.
 
-### **How You Will Work Through This Book**
+### How You Will Work Through This Book
 
 This is not a spectator sport. From the very first chapter, you will
 **clone our GitHub repository**, check out the starting branch, and
@@ -111,7 +112,7 @@ hours*” in print form. They include:
 > 
 > And many more...
 
-### **A Note on Tools**
+### A Note on Tools
 
 You will begin this journey using **Maven** to build the backend,
 because it is widely known and straightforward for beginners. Later, we
@@ -120,7 +121,7 @@ will show you exactly how to migrate. On the frontend, we will use
 **Vite** for its speed and modern tooling benefits over traditional
 React setups.
 
-### **Final Words Before We Begin**
+### Final Words Before We Begin
 
 I will be your guide, but you are the builder. Approach each chapter not
 as a task to finish, but as a **skill to master**. By the final page,
