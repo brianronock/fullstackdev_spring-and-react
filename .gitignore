@@ -67,3 +67,15 @@ part2-frontend/node_modules/
 part3-advanced-backend/target/
 part4-advanced-frontend/node_modules/
 part5-devops/.env
+
+### build outputs
+fullstack-book/build
+fullstack-book/.docusaurus
+fullstack-book/node_modules
+
+### manuscript sources
+manuscript/*.docx
+manuscript/*.pdf
+
+### temp
+tmp-md/
