@@ -52,7 +52,11 @@ const config = {
       links: [],
       copyright: `Copyright © ${new Date().getFullYear()} Brian Rono CK`,
     },
-    prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+      additionalLanguages: ['java','bash','json','yaml','sql','http','docker','properties', 'javascript', 'jsx'],
+    },
   }),
 };
 
