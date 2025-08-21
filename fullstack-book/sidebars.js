@@ -10,7 +10,7 @@ const sidebars = {
       items: [
         'part1/p1-ch1-intro',
         'part1/p1-ch2-domain-model',
-        // 'part1/p1-ch3-dto-models',
+        'part1/p1-ch3-dto-models',
       ],
     },
   ],

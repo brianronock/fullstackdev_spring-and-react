@@ -28,7 +28,8 @@ relational world:
 > Relationships between entities (not in this simple app, but in others)
 > can be mapped with annotations like @OneToMany, etc.
 
-**Why use JPA (ORM) instead of plain JDBC (SQL)?** Productivity and
+### **Why use JPA (ORM) instead of plain JDBC (SQL)?** 
+Productivity and
 maintainability. Writing SQL by hand for every query is fine in simple
 cases, but as the application grows, it can lead to a lot of boilerplate
 code (opening connections, mapping ResultSets to objects, etc.). ORMs
@@ -94,6 +95,9 @@ product without an exception.)
 Let<span dir="rtl">’</span>s see what the code for our **Product.java**
 Entity looks like, then we<span dir="rtl">’</span>ll break down the
 annotations:
+
+### **Product.java**
+
 ```java
 package com.example.springrest.models;
 
@@ -205,7 +209,8 @@ auto-DDL is not recommended for production, so later
 we<span dir="rtl">’</span>ll discuss using a migration tool (Flyway) for
 database schema.
 
-**Validations in Entity vs DTO**: We put @NotBlank and @NotNull on the
+### **Validations in Entity vs DTO**
+We put @NotBlank and @NotNull on the
 entity as a safeguard. But often we also (or instead) put validations on
 the DTOs that the controllers use for input (ProductRequest DTO in our
 case). Why both? Validation on DTO gives faster feedback (the controller
@@ -228,7 +233,8 @@ it to say, our primary validation will happen at the API level, and the
 annotations on the entity mainly help for database schema and
 documentation of intent.
 
-**Pitfall to Avoid:** One common mistake is forgetting to include a
+### **Pitfalls to Avoid**
+One common mistake is forgetting to include a
 no-argument constructor (JPA requires it). With Lombok,
 @NoArgsConstructor handles that. Another is not marking ID generation
 correctly; if you don<span dir="rtl">’</span>t set generation,
