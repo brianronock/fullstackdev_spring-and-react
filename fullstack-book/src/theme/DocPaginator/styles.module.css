@@ -1,0 +1,31 @@
+:root {
+    --ifm-color-secondary: #9887f9;
+}
+
+[data-theme='dark'] {
+    --ifm-color-secondary: #4b87e7;
+}
+
+.nav :global(.pagination-nav__link) {
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+}
+
+.title {
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+
+.desc {
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+  color: var(--ifm-color-secondary);
+  line-height: 1.5;
+}
+
+.desc{
+  margin-top: .25rem;
+  opacity: .8;
+  font-size: .9rem;
+  line-height: 1.3;
+}
