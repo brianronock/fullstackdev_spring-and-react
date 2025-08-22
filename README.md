@@ -156,6 +156,14 @@ Each part also has its own `README.md` with more detailed instructions.
 
 ---
 
+## 📖 About the Content
+
+The Docusaurus scaffold for this project is public, but the actual book manuscript—including raw chapters, tools, images, and other resources—is stored in a private repository.  
+Learners who clone this repo will see the scaffold and structure but will not have access to the full book text. To access the complete content, please use the live GitHub Pages site:  
+https://brianronock.github.io/fullstackdev_spring-and-react/
+
+---
+
 ## 📜 License & Contributions
 
 This repo is educational material accompanying the book.  
