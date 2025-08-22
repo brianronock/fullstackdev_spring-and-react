@@ -21,14 +21,36 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # pull private book source
+      - name: Checkout private book source
+        uses: actions/checkout@v4
+        with:
+          repository: brianronock/fullstack-book-source
+          token: ${{ secrets.PAT_FOR_PRIVATE }}
+          path: _book
+
+      # copy only what should be published
+      - name: Import curated content
+        run: |
+          mkdir -p fullstack-book/docs fullstack-book/blog fullstack-book/src/pages fullstack-book/static
+          rsync -av --delete _book/docs/       fullstack-book/docs/      || true
+          rsync -av --delete _book/blog/       fullstack-book/blog/      || true
+          rsync -av --delete _book/src/pages/  fullstack-book/src/pages/ || true
+          rsync -av --delete _book/static/     fullstack-book/static/    || true
+          # If sidebars.ts/config live in private, uncomment:
+          # cp _book/sidebars.ts fullstack-book/sidebars.ts
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - name: Install & build
         working-directory: fullstack-book
         run: |
           npm ci
           npm run build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
