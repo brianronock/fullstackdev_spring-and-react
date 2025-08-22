@@ -1,6 +1,6 @@
-# Website
+# Fullstack Book Website
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This is the documentation site for the **Fullstack Development with Spring Boot and React** book project. It is built with [Docusaurus](https://docusaurus.io/) and deployed automatically via GitHub Actions.
 
 ## Installation
 
@@ -26,16 +26,18 @@ This command generates static content into the `build` directory and can be serv
 
 ## Deployment
 
-Using SSH:
 
-```bash
-USE_SSH=true yarn deploy
-```
+The site is automatically deployed to **GitHub Pages**.  
+👉 The live site is available here: [brianronock.github.io/fullstackdev_spring-and-react](https://brianronock.github.io/fullstackdev_spring-and-react/)
 
-Not using SSH:
+## Note for Learners
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
+When you clone this repository, you will only see the **Docusaurus scaffold**.  
+The actual book content (chapters, blog posts, images, tools) is kept in a **private source repository** to keep this repo lightweight and focused.
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+That means:
+- You can install and run the Docusaurus dev server (`yarn start`) — it will start fine.
+- The site will not show the full book content locally.
+- To read the complete material, visit the live site: [brianronock.github.io/fullstackdev_spring-and-react](https://brianronock.github.io/fullstackdev-spring-and-react/)
+
+This way, you don’t need to handle extra files or tools — everything you need to learn is already available on the published site.
