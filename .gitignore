@@ -79,3 +79,9 @@ manuscript/*.pdf
 
 ### temp
 tmp-md/
+
+# Local symlinks to private content (for dev only)
+fullstack-book/docs
+fullstack-book/blog
+fullstack-book/static
+fullstack-book/src/pages

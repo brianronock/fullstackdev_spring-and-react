@@ -1,0 +1,38 @@
+# .github/workflows/deploy-on-dispatch.yml (public repo)
+name: Deploy on Dispatch
+on:
+  repository_dispatch:
+    types: [book-updated]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/checkout@v4
+        with:
+          repository: brianronock/fullstack-book-source
+          token: ${{ secrets.PAT_FOR_PRIVATE }}
+          path: _book
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Import curated content
+        run: |
+          mkdir -p fullstack-book/docs fullstack-book/blog fullstack-book/src/pages fullstack-book/static
+          rsync -av --delete _book/docs/       fullstack-book/docs/      || true
+          rsync -av --delete _book/blog/       fullstack-book/blog/      || true
+          rsync -av --delete _book/src/pages/  fullstack-book/src/pages/ || true
+          rsync -av --delete _book/static/     fullstack-book/static/    || true
+      - name: Build
+        working-directory: fullstack-book
+        run: npm ci && npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: fullstack-book/build }
+      - id: deployment
+        uses: actions/deploy-pages@v4
