@@ -2,9 +2,8 @@ package com.example.springrest.repositories;
 
 import com.example.springrest.models.Product;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.awt.print.Pageable;
 
 /**
  * Repository interface for performing CRUD operations and custom queries on {@link Product} entities.
