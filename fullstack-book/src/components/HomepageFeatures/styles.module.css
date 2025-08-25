@@ -1,12 +1,67 @@
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+  padding: 1rem 0;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+/* A simple card feel */
+.featureCard {
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1rem 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: var(--ifm-global-shadow-lw);
+}
 
+/* Icon/image wrapper */
+.featureMedia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  min-height: 140px; /* reserves space so cards are equal height even before img loads */
+}
+
+/* Works for both PNG/SVG */
+.featureImg {
+  max-width: 140px;   /* hard cap so huge assets don’t overflow */
+  width: 60%;         /* scale down on larger screens */
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Titles & text */
+.featureTitle {
+  margin: 0.25rem 0 0.5rem;
+  text-align: center;
+}
+
+.featureText {
+  margin: 0;
+  text-align: center;
+  line-height: 1.55;
+}
+
+/* Responsive tweaks */
+@media (max-width: 996px) {
+  .featureImg {
+    max-width: 160px;
+    width: 70%;
+  }
+  .featureCard {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .featureImg {
+    max-width: 140px;
+    width: 75%;
+  }
+  .featureMedia {
+    min-height: 120px;
+  }
 }

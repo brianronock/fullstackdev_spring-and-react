@@ -21,7 +21,9 @@
   --ifm-color-secondary: #359962;
   --ifm-color-emphasis-0: #480355;
   --ifm-navbar-background-color: #767ed4;
-  --ifm-color-secondary:  #480355;
+  --ifm-color-secondary: #480355;
+  --ifm-card-background-color: var(--ifm-navbar-background-color);
+  --ifm-menu-color: var(--ifm-color-secondary)
 
 
   /* typography */
@@ -34,7 +36,7 @@
   --ifm-leading: 0.4em;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* For readability concerns, wechoose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #8093F1;
   --ifm-color-primary-dark: #21af90;
@@ -46,8 +48,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-color-secondary: #359962;
   --ifm-color-secondary: #359962;
-  --ifm-color-emphasis-0:  #480355;
+  --ifm-color-emphasis-0: #480355;
   --ifm-navbar-background-color: #11022b;
+  --ifm-card-background-color: var(--ifm-navbar-background-color);
+
 
 }
 

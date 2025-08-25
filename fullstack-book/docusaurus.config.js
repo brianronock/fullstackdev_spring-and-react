@@ -61,11 +61,10 @@ const config = {
           routeBasePath: 'docs',
           sidebarPath: './sidebars.js',
           exclude: ['**/.gitbook/**', '**/_**/**', '**/*.backup.md'],
-          // Optional: enable "Edit this page" later if you want
           // editUrl: 'https://github.com/brianronock/fullstackdev_spring-and-react/edit/main/fullstack-book/',
         },
 
-        // Keep blog off unless you’re ready—enable conditionally if present
+        // Keep blog off until we’re ready—enable conditionally if present
         blog: fs.existsSync(USE_EXTERNAL ? EXTERNAL_BLOG : path.resolve(__dirname, 'blog'))
           ? {
             path: USE_EXTERNAL ? EXTERNAL_BLOG : 'blog',
@@ -104,7 +103,6 @@ const config = {
       logo: { alt: 'Book Logo', src: 'img/logo.svg' },
       items: [
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Table of Contents' },
-        { type: 'doc', docId: 'intro', position: 'left', label: 'Docs' },
         { href: 'https://github.com/brianronock/fullstackdev_spring-and-react', label: 'GitHub', position: 'right' },
       ],
     },
