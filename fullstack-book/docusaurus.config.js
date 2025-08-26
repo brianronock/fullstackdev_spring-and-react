@@ -104,6 +104,7 @@ const config = {
       items: [
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Table of Contents' },
         { href: '/javadoc/', label: 'Javadocs', position: 'left', target: '_blank', rel: 'noopener noreferrer' },
+        { href: 'http://localhost:8080/swagger-ui.html', label: 'API Docs', position: 'left' },
         // { to: '/api/openapi/openapi.yaml', label: 'OpenAPI YAML', position: 'left' },
         { href: 'https://github.com/brianronock/fullstackdev_spring-and-react', label: 'GitHub', position: 'right' },
       ],
