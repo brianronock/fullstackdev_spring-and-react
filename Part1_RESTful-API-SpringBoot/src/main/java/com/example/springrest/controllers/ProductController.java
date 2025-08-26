@@ -37,6 +37,24 @@ import java.net.URI;
  *   <li>Return 404 for missing resources (via the service’s {@code getOrThrow}).</li>
  * </ul>
  *
+ * <p><strong>Notes</strong>:</p>
+ * <ul>
+ *   <li>
+ *     Parameter-level validation annotations (e.g., {@code @Min(1)} on {@code id})
+ *     are included for clarity, but they will not be enforced until we introduce
+ *     {@code @Validated} in <em>Part III</em> of the book.
+ *   </li>
+ *   <li>
+ *     For now, invalid IDs (e.g., {@code 0} or negative numbers) will flow through
+ *     to the service layer and typically result in a {@code 404 Not Found} via
+ *     {@link com.example.springrest.services.ProductService#getOrThrow(Long)}.
+ *   </li>
+ *   <li>
+ *     This keeps the early chapters simpler, while still hinting at stronger
+ *     validation to come.
+ *   </li>
+ * </ul>
+ *
  * <p><strong>Examples</strong>:</p>
  * <pre>{@code
  * # List (page 0, size 20, sort by id DESC)
@@ -67,7 +85,7 @@ import java.net.URI;
 @RestController
 @RequestMapping(value = "/api/products", produces = "application/json")
 @RequiredArgsConstructor
-@Validated
+//@Validated
 @Tag(name = "Products", description = "Operations on the product catalog")
 public class ProductController {
 
