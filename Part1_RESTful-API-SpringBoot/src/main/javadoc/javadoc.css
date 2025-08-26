@@ -1,0 +1,285 @@
+/* ===== Full Stack Book — Dark Purple Javadoc ===== */
+
+:root {
+  --fsb-bg: #0e0a18;
+  /* main background */
+  --fsb-surface: #171229;
+  /* cards/blocks */
+  --fsb-surface-2: #201a37;
+  /* headers/subnavs */
+  --fsb-border: #2c2547;
+  --fsb-ink: #d5cff6;
+
+  --fsb-primary: #4200b4;
+  /* vivid purple */
+  --fsb-primary-600: #a78bfa;
+  --fsb-accent: #c084fc;
+  /* hover */
+  --fsb-link: #a78bfa;
+}
+
+/* General page */
+html body {
+  border-radius: .5rem !important;
+  background: var(--fsb-bg) !important;
+  color: var(--fsb-ink) !important;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+}
+
+/* Containers */
+.contentContainer,
+.indexContainer,
+.header {
+  max-width: 1100px;
+  margin-inline: auto;
+  background: var(--fsb-surface);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Top nav */
+.top-nav {
+  background: var(--fsb-primary) !important;
+  color: #fff !important;
+}
+
+.sub-nav a,
+.top-nav a {
+  color: #fff !important;
+}
+
+.sub-nav a:hover,
+.top-nav a:hover {
+  color: var(--fsb-accent) !important;
+}
+
+/* Sub nav */
+.sub-nav {
+  background: var(--fsb-surface-2) !important;
+  color: var(--fsb-ink) !important;
+}
+
+
+
+/* Section headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #fff3c2f2 !important;
+}
+
+section.detail>h3 {
+  color: #fbc513 !important;
+  border-bottom: 1px solid var(--fsb-border);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Blocks */
+.summary section[class$="-summary"],
+.details section[class$="-details"],
+.class-uses .detail,
+.serialized-class-details {
+  background: var(--fsb-surface) !important;
+  border: 1px solid var(--fsb-border) !important;
+  border-radius: 10px !important;
+  padding: 0.5rem 1rem;
+}
+
+/* Tables */
+.summary-table,
+.details-table {
+  background: var(--fsb-surface-2) !important;
+  border: 1px solid var(--fsb-border) !important;
+}
+
+.table-header {
+  background: #2d1f47 !important;
+  color: var(--fsb-ink) !important;
+}
+
+.even-row-color {
+  background: #1b1430 !important;
+}
+
+.odd-row-color {
+  background: #221a3d !important;
+}
+
+/* Links */
+a {
+  color: #ff7d7d !important;
+}
+
+a:hover {
+  color: #fbc513 !important;
+}
+
+/* External links (e.g. java.lang.Object in signatures) */
+a.external-link:link,
+a.external-link:visited,
+a.external-link:active {
+  color: #ea4754 !important;
+  /* bright pinkish purple */
+}
+
+a.external-link:hover,
+a.external-link:focus {
+  color: #fbc513 !important;
+  /* your gold accent on hover */
+  text-decoration: underline !important;
+}
+
+/* Member signatures (methods/fields) */
+.member-signature {
+  background: #1a142d !important;
+  border: 1px solid var(--fsb-border) !important;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: Monaco, ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", "DejaVu Sans Mono", monospace !important;
+  color: #7dd3ff;
+}
+
+.member-signature .modifiers {
+  color: #80ff7c !important;
+}
+
+.member-signature .return-type {
+  color: #5b9def !important;
+}
+
+.member-signature .element-name {
+  color: #8bcffa !important;
+  font-weight: bold;
+}
+
+.member-signature .parameters {
+  color: #fbc513 !important;
+}
+
+/* Code blocks */
+pre,
+code,
+tt {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "DejaVu Sans Mono", monospace !important;
+  background: #141020 !important;
+  color: #82fdff !important;
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+
+/* Prose blocks */
+.contentContainer div.block,
+.col-last div.block {
+  color: #dcd6f7 !important;
+  line-height: 1.6;
+}
+
+/* Captions/tabs */
+.caption span,
+div.table-tabs>button.active-table-tab {
+  background: var(--fsb-primary) !important;
+  color: #f8f1ff !important;
+  border-radius: 8px !important;
+}
+
+div.table-tabs>button.table-tab {
+  background: var(--fsb-surface-2) !important;
+  color: var(--fsb-ink) !important;
+}
+
+/* Labels (deprecated, etc.) */
+.deprecated-label,
+.preview-label,
+.member-name-label {
+  background: var(--fsb-primary-600) !important;
+  color: #1a142d !important;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* Footer */
+footer {
+  background: var(--fsb-surface-2);
+  color: #aaa;
+  padding: 1rem;
+  border-top: 1px solid var(--fsb-border);
+}
+
+/* Typography alignment with Docusaurus feel (optional) */
+body,
+table,
+div,
+p,
+dl {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+}
+
+.inherited-list,
+section[class$="-details"] .detail {
+  background-color: #1a142d !important;
+  border: 1px solid var(--fsb-border) !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  margin: 1rem 0 !important;
+}
+
+body.class-declaration-page .summary h3,
+body.class-declaration-page .details h3,
+body.class-declaration-page .summary .inherited-list h2 {
+  background-color: #2d1f47 !important;
+  border-radius: .5rem !important;
+  max-width: fit-content !important;
+  border: 1px solid #516c80;
+}
+
+.block {
+  color: #a78bfa !important;
+}
+
+dl.notes>dt {
+  color: #e73cffde !important;
+}
+
+dl.notes code {
+  color: #80ff7c !important;
+  font-weight: bold;
+}
+
+input {
+  background-color: var(--fsb-primary-600) !important;
+  border-radius: .5rem;
+}
+
+.nav-bar-cell1-rev {
+  background-color: #a78bfa !important;
+  color: #171229 !important;
+  border-radius: .5rem !important;
+}
+
+.ui-autocomplete .result-item {
+  background-color: #a78bfa !important;
+  color: #171229 !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--fsb-primary-600);
+  border-radius: 5px;
+  width: 3px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fsb-accent);
+}

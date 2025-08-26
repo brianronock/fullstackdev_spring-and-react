@@ -12,26 +12,41 @@ import java.util.function.Consumer;
 
 
 /**
- * Service layer for managing {@link Product} entities.
- * <p>
- *     This class encapsulates business logic for working with products, including listing, searching,
- *     creating, and deleting. It acts as an intermediary between the controllers and the {@link ProductRepo}
+ * Application service encapsulating business operations for {@link Product}s.
+ *
+ * <p><strong>Responsibilities</strong>:
+ * <ul>
+ *   <li>Read operations with pagination &amp; search.</li>
+ *   <li>Create, update, delete with transactional safety.</li>
+ *   <li>Consistent "not found" behavior via {@link #getOrThrow(Long)}.</li>
+ * </ul>
  * </p>
  *
- * <h2>Responsibilities</h2>
+ * <h2>Usage</h2>
+ * <pre>{@code
+ * // Controller example
+ * @GetMapping("/products")
+ * Page<ProductResponse> list(Pageable pageable) {
+ *   return productService.list(pageable).map(mapper::toResponse);
+ * }
+ *
+ * @PatchMapping("/products/{id}")
+ * ProductResponse patch(@PathVariable Long id, @RequestBody ProductRequest req) {
+ *   Product updated = productService.update(id, prod -> mapper.updateEntity(prod, req));
+ *   return mapper.toResponse(updated);
+ * }
+ * }</pre>
+ *
+ * <h2>Transactional rules</h2>
  * <ul>
- *     <li>Provide paginated access to products.</li>
- *     <li>Support case-insensitive search by product name.</li>
- *     <li>Handle "not found" scenarios using {@link ResourceNotFoundException}.</li>
- *     <li>Ensure transactional consistency for create, update, and delete operations.</li>
+ *   <li>Write methods ({@link #create(Product)}, {@link #update(Long, Consumer)}, {@link #delete(Long)})
+ *       are annotated {@link Transactional @Transactional} to ensure atomicity.</li>
+ *   <li>Read methods are non-transactional by default for better throughput.</li>
  * </ul>
  *
- * <h2>Design Notes</h2>
- * <ul>
- *     <li>Methods that modify the database are annotated with {@link Transactional} to
- *     ensure atomic operations.</li>
- *     <li>Consumers are used for flexible mutation during updates</li>
- * </ul>
+ * @implNote This service is stateless and thread-safe under typical Spring usage. Avoid holding JPA entities
+ *           between calls; always load and save within a transaction boundary.
+ * @since 1.0
  */
 @Service
 @RequiredArgsConstructor
@@ -40,19 +55,21 @@ public class ProductService {
     private final ProductRepo repo;
 
     /**
-     * Returns a pageable list of all products.
-     * @param pageable pagination and sorting information
-     * @return a page of products
+     * Returns a paginated/sorted view of all products.
+     *
+     * @param pageable pagination and sorting information (page number, size, sort)
+     * @return a page of products (possibly empty)
      */
     public Page<Product> list(Pageable pageable) {
         return repo.findAll(pageable);
     }
 
     /**
-     * Searches for products by name, ignoring case sensitivity.
+     * Searches for products by name (case-insensitive), paged.
+     *
      * @param q the query string to match against product names
      * @param pageable pagination and sorting information
-     * @return a page of products matching the search criteria
+     * @return a page of products matching the search criteria (possibly empty)
      */
     public Page<Product> searchByName(String q, Pageable pageable) {
         return repo.findByNameContainingIgnoreCase(q, pageable);
@@ -60,6 +77,7 @@ public class ProductService {
 
     /**
      * Retrieves a Product by its ID or throws an exception if not found.
+     *
      * @param id the ID of the product to retrieve
      * @return the product with the given ID
      * @throws ResourceNotFoundException if no product exists with the given ID
@@ -70,9 +88,10 @@ public class ProductService {
     }
 
     /**
-     * Creates a new product
-     * @param p the product to create
-     * @return the persisted product
+     * Creates/Persists a new product
+     *
+     * @param p the product to create (id must be {@code null})
+     * @return the persisted product with generated ID
      */
     @Transactional
     public Product create(Product p) {
@@ -80,11 +99,22 @@ public class ProductService {
     }
 
     /**
-     * Updates an existing product with the given IS by applying a mutator function.
-     * @param id the ID of the product to update
-     * @param mutator a function that modifies the existing product
-     * @return the updated product
-     * @throws ResourceNotFoundException if no product exists with the given ID
+     * Applies a mutation function to an existing product and persists the change.
+     *
+     * <p><strong>Pattern</strong>: pass a lambda that updates only what you intend to change.
+     * Combine this with a mapper's partial update for PATCH-like flows.</p>
+     *
+     * <pre>{@code
+     * productService.update(id, prod -> {
+     *   prod.setName("New Name");
+     *   prod.setPrice(new BigDecimal("19.99"));
+     * });
+     * }</pre>
+     *
+     * @param id      target product id
+     * @param mutator mutation to apply to the loaded entity
+     * @return the updated, persisted product
+     * @throws ResourceNotFoundException if the id does not exist
      */
     @Transactional
     public Product update(Long id, Consumer<Product> mutator){
@@ -95,6 +125,10 @@ public class ProductService {
 
     /**
      * Deletes a product by its ID
+     *
+     * <p>Idempotent from the controller perspective: attempts to delete a non-existent ID
+     * will result in {@link ResourceNotFoundException}, which is mapped to HTTP 404.</p>
+     *
      * @param id the ID of the product to delete
      * @throws ResourceNotFoundException if no product exists with the given ID
      */

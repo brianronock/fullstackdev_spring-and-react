@@ -112,6 +112,11 @@
                     <encoding>UTF-8</encoding>
                     <charset>UTF-8</charset>
                     <doclint>none</doclint> <!-- disables strict checks -->
+                    <addStylesheets>
+                        <addStylesheet>/javadoc.css</addStylesheet>
+                    </addStylesheets>
+                    <doctitle>Full Stack Development with Spring Boot and React — Javadoc</doctitle>
+                    <windowtitle>Full Stack Development with Spring Boot and React — Javadoc</windowtitle>
                 </configuration>
             </plugin>
         </plugins>

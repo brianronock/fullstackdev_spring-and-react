@@ -6,11 +6,33 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 /**
- * DTO representing the data returned to clients for a product.
- * <p>
- *     This record is used in API responses. It ensures that only safe,
- *     client-relevant product data is exposed, decoupled from internal entities.
+ * Request DTO used to create or update a {@code Product}.
+ *
+ * <p><strong>Why a DTO?</strong>
+ * Keeps the HTTP contract stable and safe, decoupled from the JPA entity.
+ * Validation annotations ensure early, actionable feedback for clients.
  * </p>
+ *
+ * <p><strong>Example (JSON)</strong>:</p>
+ * <pre>{@code
+ * {
+ *   "name": "Coffee Mug",
+ *   "price": 12.99
+ * }
+ * }</pre>
+ *
+ * <p><strong>Usage (Controller)</strong>:</p>
+ * <pre>{@code
+ * @PostMapping("/products")
+ * public ResponseEntity<ProductResponse> create(@Valid @RequestBody ProductRequest req) {
+ *     Product saved = productService.create(new Product(req.name(), req.price()));
+ *     return ResponseEntity
+ *         .created(URI.create("/products/" + saved.getId()))
+ *         .body(new ProductResponse(saved.getId(), saved.getName(), saved.getPrice()));
+ * }
+ * }</pre>
+ *
+ * @since 1.0
  */
 @Schema(description = "Request payload for creating or updating a product.")
 public record ProductRequest(
