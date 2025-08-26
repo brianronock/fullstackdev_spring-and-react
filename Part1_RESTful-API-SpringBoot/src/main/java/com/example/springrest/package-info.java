@@ -13,8 +13,8 @@
  *   <li>{@link com.example.springrest.mappers mappers} – MapStruct mappers (entity ↔ DTO).</li>
  *   <li>{@link com.example.springrest.repositories repositories} – Spring Data JPA repositories.</li>
  *   <li>{@link com.example.springrest.services services} – Application/business logic.</li>
- *   <li>{ controllers} – Web layer (REST endpoints).</li>
- *   <li>{@link com.example.springrest.exceptions exceptions} – Custom exceptions & (optionally) handlers.</li>
+ *   <li>{@link com.example.springrest.controllers controllers} – Web layer (REST endpoints).</li>
+ *   <li>{@link com.example.springrest.exceptions exceptions} – Custom exceptions &amp; (optionally) handlers.</li>
  *   <li>{ config} – Application/Web configuration (e.g., CORS, OpenAPI).</li>
  * </ul>
  *
