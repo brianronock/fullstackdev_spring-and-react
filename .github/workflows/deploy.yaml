@@ -38,8 +38,39 @@ jobs:
           rsync -av --delete _book/blog/       fullstack-book/blog/      || true
           rsync -av --delete _book/src/pages/  fullstack-book/src/pages/ || true
           rsync -av --delete _book/static/     fullstack-book/static/    || true
-          # If sidebars.ts/config live in private, uncomment:
-          # cp _book/sidebars.ts fullstack-book/sidebars.ts
+
+      # Cache Maven deps to speed up builds
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # build Javadoc
+      # Maven:
+      - name: Set up JDK (for Javadoc)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build Javadoc (Maven)
+        working-directory: Part1_RESTful-API-SpringBoot
+        run: mvn -q -DskipTests javadoc:javadoc
+# For later(Part 3) when we migrate to gradle
+#      - name: Build Javadoc (Gradle)
+#        working-directory: Part1_RESTful-API-SpringBoot
+#        run: |
+#          ./gradlew -q clean javadoc
+
+      # Copy Javadoc into Docusaurus static path
+      - name: Copy Javadoc into site
+        run: |
+          mkdir -p fullstack-book/static/javadoc
+          rsync -av --delete Part1_RESTful-API-SpringBoot/target/site/apidocs/ fullstack-book/static/javadoc/ || true
+# For later(Part 3) when we migrate to gradle
+#          rsync -av --delete Part1_RESTful-API-SpringBoot/build/docs/javadoc/ fullstack-book/static/javadoc/ || true
 
       - uses: actions/setup-node@v4
         with:

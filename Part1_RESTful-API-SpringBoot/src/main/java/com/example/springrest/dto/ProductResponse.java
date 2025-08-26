@@ -5,11 +5,28 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 
 /**
- * DTO representing the data returned to clients for a product.
- * <p>
- *     This record is used in API responses. It ensures that only safe,
- *     client-relevant product data is exposed, decoupled from internal entities.
+ * Response DTO returned to clients for {@code Product} resources.
+ *
+ * <p><strong>Shape</strong>: minimal, stable fields optimized for clients.
+ * Avoids leaking internal entity details and supports versioned evolution.
  * </p>
+ *
+ * <p><strong>Example (JSON)</strong>:</p>
+ * <pre>{@code
+ * {
+ *   "id": 42,
+ *   "name": "Coffee Mug",
+ *   "price": 12.99
+ * }
+ * }</pre>
+ *
+ * <p><strong>Usage (Service → Controller)</strong>:</p>
+ * <pre>{@code
+ * Product p = productService.getOrThrow(id);
+ * return new ProductResponse(p.getId(), p.getName(), p.getPrice());
+ * }</pre>
+ *
+ * @since 1.0
  */
 @Schema(description = "Response payload containing product details.")
 public record ProductResponse(

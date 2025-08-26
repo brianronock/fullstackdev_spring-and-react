@@ -12,7 +12,9 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "docs:javadoc": "mvn -q -f ../Part1_RESTful-API-SpringBoot/pom.xml -DskipTests javadoc:javadoc && rm -rf static/javadoc && mkdir -p static/javadoc && rsync -a ../Part1_RESTful-API-SpringBoot/target/site/apidocs/ static/javadoc/",
+    "start:with-javadoc": "npm run docs:javadoc && cross-env LOCAL_DOCS=external docusaurus start"
   },
   "dependencies": {
     "@docusaurus/core": "3.8.1",

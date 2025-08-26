@@ -48,7 +48,7 @@ const config = {
   i18n: { defaultLocale: 'en', locales: ['en'] },
 
   // Use external static dir during local dev, otherwise the in-repo one
-  staticDirectories: USE_EXTERNAL ? [EXTERNAL_STATIC] : ['static'],
+  staticDirectories: USE_EXTERNAL ? [EXTERNAL_STATIC, 'static'] : ['static'],
 
   presets: [
     [
@@ -103,6 +103,8 @@ const config = {
       logo: { alt: 'Book Logo', src: 'img/logo.svg' },
       items: [
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Table of Contents' },
+        { href: '/javadoc/', label: 'Javadocs', position: 'left', target: '_blank', rel: 'noopener noreferrer' },
+        // { to: '/api/openapi/openapi.yaml', label: 'OpenAPI YAML', position: 'left' },
         { href: 'https://github.com/brianronock/fullstackdev_spring-and-react', label: 'GitHub', position: 'right' },
       ],
     },
