@@ -53,7 +53,7 @@ public class CorsConfig {
      * app.cors.origin=http://localhost:5173,http://myfrontend.com
      * }</pre>
      */
-    @Value("${app.cors.origin}")
+    @Value("${app.cors.origins}")
     private String allowedOrigins;
 
     /**
