@@ -1,9 +1,16 @@
-HELP.md
+# -------------------------
+# Build Artifacts
+# -------------------------
 target/
-.mvn/wrapper/maven-wrapper.jar
+build/
 !**/src/main/**/target/
 !**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
+# -------------------------
+# IDE / Tooling
+# -------------------------
 ### STS ###
 .apt_generated
 .classpath
@@ -25,14 +32,13 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
 
-### Node / React (for Part II & IV) ###
+# -------------------------
+# Node / React (Part II & IV)
+# -------------------------
 node_modules/
 dist/
 build/
@@ -46,41 +52,64 @@ coverage/
 .vite/
 *.tsbuildinfo
 
-### Logs ###
+# -------------------------
+# Logs
+# -------------------------
 logs/
 *.log
 *.log.*
 
-### OS Files ###
+# -------------------------
+# OS Files
+# -------------------------
 .DS_Store
 Thumbs.db
 
-### Docker ###
+# -------------------------
+# Docker
+# -------------------------
 /docker-compose.override.yml
 /.env
 .env.local
 .env.*.local
 
-### Project-specific (multi-part repo) ###
+# -------------------------
+# Project-specific (multi-part repo)
+# -------------------------
 Part1_RESTful-API-SpringBoot/target/
 part2-frontend/node_modules/
 part3-advanced-backend/target/
 part4-advanced-frontend/node_modules/
 part5-devops/.env
 
-### build outputs
+# -------------------------
+# Database Artifacts (H2 file-based)
+# -------------------------
+Part1_RESTful-API-SpringBoot/.data/
+Part1_RESTful-API-SpringBoot/*.mv.db
+Part1_RESTful-API-SpringBoot/*.trace.db
+
+# -------------------------
+# Docusaurus / Book Outputs
+# -------------------------
 fullstack-book/build
 fullstack-book/.docusaurus
 fullstack-book/node_modules
 
-### manuscript sources
+# -------------------------
+# Manuscript Sources
+# -------------------------
 manuscript/*.docx
 manuscript/*.pdf
 
-### temp
+# -------------------------
+# Temporary Files
+# -------------------------
 tmp-md/
 
+# -------------------------
 # Local symlinks to private content (for dev only)
+# -------------------------
 fullstack-book/docs
 fullstack-book/blog
 fullstack-book/static
