@@ -23,7 +23,7 @@ In this section, we build the backend foundation: a RESTful API with Spring Boot
 ## ⚙️ Tech Stack for Part I
 - Backend Framework: Spring Boot 3.5.x  
 - Language: Java 17+  
-- Database: H2 (in-memory) for dev/testing  
+- Database: H2 (in-file) for dev/testing  
 - ORM: Spring Data JPA  
 - Validation: Jakarta Bean Validation  
 - Boilerplate Reduction: Lombok  
