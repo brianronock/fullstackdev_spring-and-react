@@ -71,20 +71,21 @@ to see the backend project at the beginning of Part I.
   13. Common Pitfalls and How to Avoid Them
 
 - **Part III - Advanced Backend Features (Spring Boot)**  
-  1. Authentication & Authorization with JWT  
-  2. Robust Validation & Global Error Handling  
-  3. Concurrency & Optimistic Locking  
-  4. Advanced Searching with Specifications  
-  5. Partial Updates (PATCH with JSON Merge Patch)  
-  6. Caching with Redis  
-  7. Auditing & Soft Deletes  
-  8. File Uploads (Images)  
-  9. Observability with Actuator, Metrics, and Tracing  
-  10. Rate Limiting & Throttling  
-  11. API Versioning & OpenAPI Documentation  
-  12. Database Migrations with Flyway & Testing with Testcontainers  
-  13. Asynchronous Work & Domain Events  
-  14. Hardening & Best Practices Checklist  
+  1. Introduction to Advanced Backend
+  2. Authentication & Authorization with JWT & Spring Security  
+  3. Robust Validation & Global Error Handling (Problem Details)
+  4. Concurrency & Optimistic Locking & Transactions
+  5. Advanced Searching with Specifications (Dynamic Filters)
+  6. Partial Updates (HTTP PATCH with JSON Merge Patch)  
+  7. Caching with Redis & Spring Cache
+  8. Auditing & Soft Deletes  
+  9. File Uploads (Images)  
+  10. Observability with Actuator, Metrics, and Tracing  
+  11. Rate Limiting & Throttling (Buket4j)
+  12. API Versioning & OpenAPI Documentation  
+  13. Database Migrations with Flyway & Testing with Testcontainers  
+  14. Asynchronous Work & Domain Events  
+  15. Hardening & Best Practices Checklist  
 
 - **Part IV - Advanced Frontend Features (React)**  
   1. Introduction to Advanced Frontend with React  
@@ -92,7 +93,7 @@ to see the backend project at the beginning of Part I.
   3. Navigation with React Router  
   4. Enhancing Navigation with UI & UX Features  
   5. Forms & Validation  
-  6. Search, Filtering & Sorting  
+  6. Advanced Search, Filtering & Sorting  
   7. Pagination in React with Redux & Backend Integration  
   8. File Uploads & Image Thumbnails  
   9. Robust Error Handling & Conflict Resolution  
