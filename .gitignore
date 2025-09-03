@@ -77,7 +77,7 @@ Thumbs.db
 # Project-specific (multi-part repo)
 # -------------------------
 Part1_RESTful-API-SpringBoot/target/
-part2-frontend/node_modules/
+Part2_Responsive-Frontend-React/node_modules/
 part3-advanced-backend/target/
 part4-advanced-frontend/node_modules/
 part5-devops/.env
