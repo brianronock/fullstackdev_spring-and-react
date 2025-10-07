@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>SpringRest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Part1_RESTful-API-SpringBoot</name>
-    <description>Part1_RESTful-API-SpringBoot</description>
+    <name>backend</name>
+    <description>backend</description>
     <url/>
     <licenses>
         <license/>

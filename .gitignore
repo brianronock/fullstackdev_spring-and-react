@@ -76,7 +76,7 @@ Thumbs.db
 # -------------------------
 # Project-specific (multi-part repo)
 # -------------------------
-Part1_RESTful-API-SpringBoot/target/
+backend/target/
 Part2_Responsive-Frontend-React/node_modules/
 part3-advanced-backend/target/
 part4-advanced-frontend/node_modules/
@@ -85,9 +85,9 @@ part5-devops/.env
 # -------------------------
 # Database Artifacts (H2 file-based)
 # -------------------------
-Part1_RESTful-API-SpringBoot/.data/
-Part1_RESTful-API-SpringBoot/*.mv.db
-Part1_RESTful-API-SpringBoot/*.trace.db
+backend/.data/
+backend/*.mv.db
+backend/*.trace.db
 
 # -------------------------
 # Docusaurus / Book Outputs
