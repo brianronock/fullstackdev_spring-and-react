@@ -42,39 +42,83 @@ jobs:
           rsync -av --delete _book/src/pages/  fullstack-book/src/pages/ || true
           rsync -av --delete _book/static/     fullstack-book/static/    || true
 
+      # detect build system (backend path adjust here if you rename)
+      - name: Detect backend build system
+        id: detect
+        run: |
+          echo "backend_dir=$BACKEND_DIR" >> $GITHUB_OUTPUT
+          if [ -f "$BACKEND_DIR/pom.xml" ]; then
+            echo "build=maven" >> $GITHUB_OUTPUT
+          elif [ -f "$BACKEND_DIR/gradlew" ]; then
+            echo "build=gradle" >> $GITHUB_OUTPUT
+          elif [ -f "$BACKEND_DIR/build.gradle.kts" ] || [ -f "$BACKEND_DIR/build.gradle" ]; then
+            echo "build=gradle" >> $GITHUB_OUTPUT
+          else
+            echo "build=none" >> $GITHUB_OUTPUT
+          fi
+
+      # -------------- MAVEN -------------------------
       # Cache Maven deps to speed up builds
       - name: Cache Maven packages
+        if: steps.detect.outputs.build == 'maven'
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-
       # build Javadoc
-      # Maven:
       - name: Set up JDK (for Javadoc)
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
       - name: Build Javadoc (Maven)
+        if: steps.detect.outputs.build == 'maven'
         working-directory: ${{ env.BACKEND_DIR }}
         run: mvn -q -DskipTests javadoc:javadoc
-# For later(Part 3) when we migrate to gradle
-#      - name: Build Javadoc (Gradle)
-#        working-directory: ${{ env.BACKEND_DIR }}
-#        run: |
-#          ./gradlew -q clean javadoc
 
-      # Copy Javadoc into Docusaurus static path
-      - name: Copy Javadoc into site
+      # -------------- GRADLE -------------------------
+      # Cache Gradle deps to speed up builds
+      - name: Cache Gradle
+        if: steps.detect.outputs.build == 'gradle'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-
+
+      - name: Make gradlew executable
+        if: steps.detect.outputs.build == 'gradle'
+        working-directory: ${{ steps.detect.outputs.backend_dir }}
+        run: chmod +x gradlew
+
+      - name: Build Javadoc (Gradle)
+        if: steps.detect.outputs.build == 'gradle'
+        working-directory: ${{ steps.detect.outputs.backend_dir }}
+        run: ./gradlew -q clean javadoc
+
+      # ---------- Copy Javadoc into site ----------
+      - name: Copy Javadoc into site (Maven)
+        if: steps.detect.outputs.build == 'maven'
         run: |
           mkdir -p fullstack-book/static/javadoc
-          rsync -av --delete ${{ env.BACKEND_DIR }}/target/site/apidocs/ fullstack-book/static/javadoc/ || true
-# For later(Part 3) when we migrate to gradle
-#          rsync -av --delete ${{ env.BACKEND_DIR }}/build/docs/javadoc/ fullstack-book/static/javadoc/ || true
+          rsync -av --delete "${{ steps.detect.outputs.backend_dir }}/target/site/apidocs/" fullstack-book/static/javadoc/ || true
 
+      - name: Copy Javadoc into site (Gradle)
+        if: steps.detect.outputs.build == 'gradle'
+        run: |
+          mkdir -p fullstack-book/static/javadoc
+          rsync -av --delete "${{ steps.detect.outputs.backend_dir }}/build/docs/javadoc/" fullstack-book/static/javadoc/ || true
+
+      - name: Fail if no backend build system found
+        if: steps.detect.outputs.build == 'none'
+        run: |
+          echo "No Maven/Gradle build found in ${{ steps.detect.outputs.backend_dir }}"; exit 1
+
+      # ---------- Docusaurus ----------
       - uses: actions/setup-node@v4
         with:
           node-version: 20
