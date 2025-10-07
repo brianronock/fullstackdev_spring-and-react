@@ -113,3 +113,7 @@ tmp-md/
 fullstack-book/docs
 fullstack-book/blog
 fullstack-book/static
+
+# Gradle
+.gradle/
+**/build/
