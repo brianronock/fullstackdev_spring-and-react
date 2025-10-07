@@ -115,9 +115,5 @@ fullstack-book/blog
 fullstack-book/static
 
 # Gradle
-.gradle/
-**/build/
-
-# Gradle
-.gradle/
+**/.gradle/
 **/build/
