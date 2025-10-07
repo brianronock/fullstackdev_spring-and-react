@@ -98,7 +98,7 @@ public class ProductController {
      * <p>Default page size is 20, sorted by {@code id DESC}. Override with
      * query params like {@code ?page=1&size=50&sort=name,asc}.</p>
      *
-     * @param pageable pagination & sorting (page, size, sort)
+     * @param pageable pagination and sorting (page, size, sort)
      * @return page of {@link ProductResponse}
      */
     @Operation(
@@ -145,7 +145,7 @@ public class ProductController {
      * Searches products by (case-insensitive) name substring.
      *
      * @param q        required query string to match within product names
-     * @param pageable pagination & sorting (page, size, sort)
+     * @param pageable pagination and sorting (page, size, sort)
      * @return page of matches
      */
     @Operation(

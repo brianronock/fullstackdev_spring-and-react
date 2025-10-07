@@ -20,12 +20,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Page<Product> mugs = repo.findByNameContainingIgnoreCase("mug", PageRequest.of(0, 10));
  * }</pre>
  *
- * <p><strong>Performance tips</strong>:
+ * <p><strong>Performance tips</strong>: </p>
  * <ul>
  *   <li>Consider an index on {@code lower(name)} for large catalogs to speed up case-insensitive matching.</li>
  *   <li>Always pass a {@link Pageable} to avoid loading large result sets into memory.</li>
  * </ul>
- * </p>
  *
  * @since 1.0
  */

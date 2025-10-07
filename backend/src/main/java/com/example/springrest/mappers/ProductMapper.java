@@ -42,8 +42,8 @@ import org.mapstruct.*;
  * }
  * }</pre>
  *
- * @apiNote Mapping behavior is compile-time generated; if you add new fields to the entity/DTOs,
- *          consider enabling MapStruct's {@code unmappedTargetPolicy = ReportingPolicy.ERROR} to catch omissions.
+ * <p><strong>API note:</strong> Mapping behavior is compile-time generated; if you add new fields to the entity/DTOs,
+ *          consider enabling MapStruct's {@code unmappedTargetPolicy = ReportingPolicy.ERROR} to catch omissions. </p>
  * @since 1.0
  */
 @Mapper(componentModel = "spring")
