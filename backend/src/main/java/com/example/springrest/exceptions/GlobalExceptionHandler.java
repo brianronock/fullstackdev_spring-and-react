@@ -67,7 +67,7 @@ public class GlobalExceptionHandler {
      *     the error message.
      * </p>
      *
-     * <h3>Old way (imperative)</h3>
+     * <p><strong>Old way (imperative)</strong></p>
      * <pre>{@code
      * Map<String, String> error = new HashMap<>();
      * error.put("error", ex.getMessage());
@@ -77,7 +77,7 @@ public class GlobalExceptionHandler {
      * @param ex the exception containing the cause of the resource lookup failure
      * @return a map with a single entry {@code "error": message}
      *
-     * <h2>Example</h2>
+     * <p><strong>Example</strong></p>
      * <pre>{@code
      * {
      *   "error": "Product not found with ID: 99"
@@ -99,7 +99,7 @@ public class GlobalExceptionHandler {
      *     their corresponding validation error messages.
      * </p>
      *
-     * <h3>Old way (imperative)</h3>
+     * <p><strong>Old way (imperative)</strong></p>
      * <pre>{@code
      * Map<String, String> error = new HashMap<>();
      * for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
@@ -111,7 +111,7 @@ public class GlobalExceptionHandler {
      * @param ex the exception containing details of all validation errors
      * @return a map of field names to validation messages
      *
-     * <h2>Example</h2>
+     * <p><strong>Example</strong></p>
      * <pre>{@code
      * {
      *   "name": "Name is mandatory",

@@ -14,13 +14,12 @@ import java.util.function.Consumer;
 /**
  * Application service encapsulating business operations for {@link Product}s.
  *
- * <p><strong>Responsibilities</strong>:
+ * <p><strong>Responsibilities</strong>: </p>
  * <ul>
  *   <li>Read operations with pagination &amp; search.</li>
  *   <li>Create, update, delete with transactional safety.</li>
  *   <li>Consistent "not found" behavior via {@link #getOrThrow(Long)}.</li>
  * </ul>
- * </p>
  *
  * <h2>Usage</h2>
  * <pre>{@code
@@ -44,8 +43,8 @@ import java.util.function.Consumer;
  *   <li>Read methods are non-transactional by default for better throughput.</li>
  * </ul>
  *
- * @implNote This service is stateless and thread-safe under typical Spring usage. Avoid holding JPA entities
- *           between calls; always load and save within a transaction boundary.
+ * <p><strong>Implementation note:</strong> This service is stateless and thread-safe under typical Spring usage. Avoid holding JPA entities
+ *           between calls; always load and save within a transaction boundary. </p>
  * @since 1.0
  */
 @Service
