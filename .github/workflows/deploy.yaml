@@ -14,6 +14,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  BACKEND_DIR: backend
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -56,11 +59,11 @@ jobs:
           distribution: temurin
           java-version: '21'
       - name: Build Javadoc (Maven)
-        working-directory: Part1_RESTful-API-SpringBoot
+        working-directory: ${{ env.BACKEND_DIR }}
         run: mvn -q -DskipTests javadoc:javadoc
 # For later(Part 3) when we migrate to gradle
 #      - name: Build Javadoc (Gradle)
-#        working-directory: Part1_RESTful-API-SpringBoot
+#        working-directory: ${{ env.BACKEND_DIR }}
 #        run: |
 #          ./gradlew -q clean javadoc
 
@@ -68,9 +71,9 @@ jobs:
       - name: Copy Javadoc into site
         run: |
           mkdir -p fullstack-book/static/javadoc
-          rsync -av --delete Part1_RESTful-API-SpringBoot/target/site/apidocs/ fullstack-book/static/javadoc/ || true
+          rsync -av --delete ${{ env.BACKEND_DIR }}/target/site/apidocs/ fullstack-book/static/javadoc/ || true
 # For later(Part 3) when we migrate to gradle
-#          rsync -av --delete Part1_RESTful-API-SpringBoot/build/docs/javadoc/ fullstack-book/static/javadoc/ || true
+#          rsync -av --delete ${{ env.BACKEND_DIR }}/build/docs/javadoc/ fullstack-book/static/javadoc/ || true
 
       - uses: actions/setup-node@v4
         with:
