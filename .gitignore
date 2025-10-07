@@ -117,3 +117,7 @@ fullstack-book/static
 # Gradle
 .gradle/
 **/build/
+
+# Gradle
+.gradle/
+**/build/
